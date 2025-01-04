@@ -19,7 +19,7 @@
   - Reply to specific comments.
 - **Create New Post**:
   - Create a new post.
-  - Create a new post with a background color.
+  - Create a new post with a background color. An expandable animated color palate menu has been implemented.
 - **UI Enhancements**:
   - Transitions and Shimmer Loadings.
   - Responsiveness to handle long feed posts and adaptability for various screen sizes.
@@ -40,12 +40,13 @@
 ## Design Keynotes
 - **Gradient Colors**:
   - Matches exactly as mentioned in the API docs.
+  - An expandable animated color palate menu has been implemented which user will see while creating a post and can pick color for his post's background.
 - **Hero Transition**:
   - From the New Post Box on the home screen to the main New Post Screen, a hero transition ensures the user feels they are typing in the same text field.
 - **Feed Post Design**:
-  - Multiple images are perfectly centered with a border radius while maintaining the original ratio.
+  - Multiple images are perfectly centered with a border-radius while maintaining the original ratio.
   - Feed post main content text size is adaptable to the length of the post. Short posts appear with larger fonts, enhancing readability.
-  - For the feed post that has background color, will be applied with different constraints, such as minimum height has been set (As same approach as facebook.com).
+  - For the feed post that has a background color, will be applied with different constraints, such as minimum height has been set (As same approach as facebook.com).
 - **User Profile Integration**:
   - Every post and comment shows its creator’s user profile picture fetched from the API endpoint.
 - **Handled Scenarios**:
@@ -69,6 +70,15 @@
 - **Replies**:
   - Replies are collapsed by default. Clicking on them loads and displays the replies.
   - This approach reduces the number of read requests and prevents unnecessary user distractions.
+ ![Uploading Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16.44.01.png…]()
+![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 47 05](https://github.com/user-attachments/assets/df33295f-22d9-4c73-ac8c-6069a1ee2963)
+![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 47 24](https://github.com/user-attachments/assets/286ff2f0-5cdc-48e9-8e82-83d1ab9b1d4a)
+![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 49 43](https://github.com/user-attachments/assets/f6d8f176-00ec-4316-a154-d4f418216f4d)
+![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 08](https://github.com/user-attachments/assets/b86a5501-9665-4fc5-be74-b3770dabe85b)
+![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 16](https://github.com/user-attachments/assets/7797ba38-27ca-4f2e-a310-59680d99cd10)
+![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 28](https://github.com/user-attachments/assets/232d189a-cf29-41a4-afa5-381c25dcf395)
+![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 34](https://github.com/user-attachments/assets/c47f0746-296b-4f44-9d54-9e34e4846cc4)
+
 
 ---
 
