@@ -70,7 +70,7 @@
 - **Replies**:
   - Replies are collapsed by default. Clicking on them loads and displays the replies.
   - This approach reduces the number of read requests and prevents unnecessary user distractions.
- ![Uploading Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16.44.01.png…]()
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/df33295f-22d9-4c73-ac8c-6069a1ee2963" alt="Screenshot 1" width="200"/>
   <img src="https://github.com/user-attachments/assets/286ff2f0-5cdc-48e9-8e82-83d1ab9b1d4a" alt="Screenshot 2" width="200"/>
@@ -84,7 +84,8 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c47f0746-296b-4f44-9d54-9e34e4846cc4" alt="Screenshot 7" width="200"/>
+   <img src="https://github.com/user-attachments/assets/28cd16ee-8d81-4dad-9858-27af40b1a485" alt="Screenshot 7" width="200"/>
+  <img src="https://github.com/user-attachments/assets/c47f0746-296b-4f44-9d54-9e34e4846cc4" alt="Screenshot 8" width="200"/>
 </p>
 
 
