@@ -67,6 +67,9 @@ class PostColors {
 
   static LinearGradient getGradientColor(String rawGradientData) {
     final index = feedBackGroundGradientColorsToPost.indexOf(rawGradientData);
+    if (index == -1) {
+      return gradientsColor[0];
+    }
     return gradientsColor[index];
   }
 }
