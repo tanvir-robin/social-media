@@ -139,7 +139,7 @@ class CommentItem extends StatelessWidget {
 class CommentsPage extends StatelessWidget {
   CommentsPage({super.key, required this.post});
   final Post post;
-  final TextEditingController commentController = TextEditingController();
+
   final FeedController feedController = FeedController.instance;
 
   @override
@@ -190,6 +190,8 @@ class CommentsPage extends StatelessWidget {
                             feedController.isReplying = false;
                             feedController.replyigTo = '';
                             feedController.replyingToID = '';
+                            feedController.commentController.clear();
+                            feedController.commentFocusNode.unfocus();
                             feedController.updateScreen();
                           },
                           child: const Icon(
@@ -205,7 +207,7 @@ class CommentsPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(24.0),
                   child: TextField(
                     focusNode: feedController.commentFocusNode,
-                    controller: commentController,
+                    controller: feedController.commentController,
                     style: const TextStyle(color: Colors.black),
                     decoration: InputDecoration(
                       prefixIcon: const Icon(
@@ -225,8 +227,8 @@ class CommentsPage extends StatelessWidget {
                         width: 65,
                         child: IconButton(
                           onPressed: () {
-                            feedController.createComment(post.id.toString(),
-                                post.userId.toString(), commentController.text);
+                            feedController.createComment(
+                                post.id.toString(), post.userId.toString());
                           },
                           icon: Image.asset(
                             'assets/icons/sent.png',
@@ -289,6 +291,8 @@ class _ParentCommentWithChild extends StatelessWidget {
             FeedController.instance.isReplying = true;
             FeedController.instance.replyigTo = comment.user.fullName;
             FeedController.instance.replyingToID = comment.id.toString();
+            FeedController.instance.commentController.text =
+                '@${comment.user.fullName} ';
             FeedController.instance.updateScreen();
             FocusScope.of(context)
                 .requestFocus(FeedController.instance.commentFocusNode);
@@ -339,6 +343,8 @@ class _ParentCommentWithChild extends StatelessWidget {
                     FeedController.instance.replyigTo = comment.user.fullName;
                     FeedController.instance.replyingToID =
                         comment.id.toString();
+                    FeedController.instance.commentController.text =
+                        '@${comment.user.fullName} ';
                     FeedController.instance.updateScreen();
                     FocusScope.of(context)
                         .requestFocus(FeedController.instance.commentFocusNode);

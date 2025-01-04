@@ -12,30 +12,41 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: true,
         body: Container(
-      alignment: Alignment.topCenter,
-      decoration: const BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('assets/images/login_bg.png'),
-          fit: BoxFit.cover,
-        ),
-      ),
-      child: GetBuilder<AuthController>(
-          init: AuthController(),
-          builder: (authController) {
-            return SafeArea(
-                bottom: false,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    const Spacer(),
-                    const BrandingContainer(),
-                    const Spacer(),
-                    buildSignInContainer(authController)
-                  ],
-                ));
-          }),
-    ));
+          alignment: Alignment.topCenter,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/login_bg.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: GetBuilder<AuthController>(
+              init: AuthController(),
+              builder: (authController) {
+                return SafeArea(
+                  bottom: false,
+                  child: SingleChildScrollView(
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: MediaQuery.of(context).size.height,
+                      ),
+                      child: IntrinsicHeight(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            const Spacer(),
+                            const BrandingContainer(),
+                            const Spacer(),
+                            buildSignInContainer(authController),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              }),
+        ));
   }
 
   Widget buildSignInContainer(AuthController authController) {

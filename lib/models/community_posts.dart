@@ -129,9 +129,9 @@ class Post {
   final int? isPinned;
   final String? fileType;
   final List<File>? files;
-  final int? likeCount;
-  final int? commentCount;
-  final int? shareCount;
+  int? likeCount;
+  int? commentCount;
+  int? shareCount;
   final int? shareId;
   final Map<String, dynamic>? metaData;
   final String? createdAt;
@@ -158,13 +158,13 @@ class Post {
   final int? isPrivateChat;
   final dynamic group;
   final dynamic poll;
-  final dynamic like;
+  dynamic like;
   final dynamic follow;
   final dynamic savedPosts;
   final List<dynamic>? comments;
   final Map<String, dynamic>? meta;
   final User? user;
-  final List<LikeType>? likeType; // New field
+  List<LikeType>? likeType; // New field
 
   Post({
     required this.id,

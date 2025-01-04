@@ -21,34 +21,48 @@ class CommunityFeed extends StatelessWidget {
         child: HomeAppbar(),
       ),
       body: SafeArea(
-        child: GetBuilder(
-            init: FeedController(),
-            builder: (controller) {
-              return SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const NewPostBox(),
-                    if (controller.allCommunityPosts.isEmpty &&
-                        controller.isLoading)
-                      ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return const ShimmerPostCard();
-                          }),
+        child: GetBuilder<FeedController>(
+          init: FeedController(),
+          builder: (controller) {
+            return SingleChildScrollView(
+              controller: controller.scrollController,
+              child: Column(
+                children: [
+                  const NewPostBox(),
+                  if (controller.allCommunityPosts.isEmpty &&
+                      controller.isLoading)
                     ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: controller.allCommunityPosts.length,
-                        itemBuilder: (context, index) {
-                          return PostCard(
-                            post: controller.allCommunityPosts[index],
-                          );
-                        })
-                  ],
-                ),
-              );
-            }),
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                        return const ShimmerPostCard();
+                      },
+                    ),
+                  ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: controller.allCommunityPosts.length,
+                    itemBuilder: (context, index) {
+                      return PostCard(
+                        post: controller.allCommunityPosts[index],
+                      );
+                    },
+                  ),
+                  if (controller.isLoadingMore)
+                    ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                        return const ShimmerPostCard();
+                      },
+                    ),
+                ],
+              ),
+            );
+          },
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,

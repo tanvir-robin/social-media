@@ -57,7 +57,7 @@ class AuthController extends GetxController {
           await prefs.setString('userToken', loginResponse!.token!);
         }
         Alerts.dismiss();
-        Get.offAll(() => const CommunityFeed());
+        Get.offAll(() => CommunityFeed());
         Alerts.showToast(message: 'Login Successful');
       } else {
         Alerts.dismiss();

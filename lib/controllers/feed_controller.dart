@@ -14,13 +14,16 @@ import 'package:http/http.dart' as http;
 
 class FeedController extends GetxController {
   static FeedController instance = Get.find<FeedController>();
+  final ScrollController scrollController = ScrollController();
   Timer? feedUpdateTimer;
   FocusNode commentFocusNode = FocusNode();
   TextEditingController postTextController = TextEditingController();
+  final TextEditingController commentController = TextEditingController();
   List<Post> allCommunityPosts = [];
   List<Comment> comments = [];
   bool isReplying = false;
   bool isLoading = false;
+  bool isLoadingMore = false;
   bool isColorPaletteExpanded = false;
   String replyigTo = "";
   String replyingToID = "";
@@ -34,6 +37,14 @@ class FeedController extends GetxController {
     startFeedUpdateTimer();
     postColor = PostColors.gradientsColor.first;
     postColorIndex = 0;
+    scrollController.addListener(() {
+      if (scrollController.position.pixels >=
+          scrollController.position.maxScrollExtent * 0.75) {
+        if (!isLoadingMore) {
+          laodMoreFeed();
+        }
+      }
+    });
   }
 
   startLoading() {
@@ -74,6 +85,39 @@ class FeedController extends GetxController {
       }
     } catch (e) {
       stopLoading();
+      Alerts.showError(message: 'Failed to load feed');
+    }
+  }
+
+  Future<void> laodMoreFeed() async {
+    try {
+      isLoadingMore = true;
+      update();
+      final token = AuthController.instance.loginResponse!.token;
+      final response = await http.post(
+        Uri.parse(
+            '${ApiEndoints.baseUrl}${ApiEndoints.feed}&more=${allCommunityPosts.last.id}'),
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode({'community_id': '2914', 'space_id': '5883'}),
+      );
+      if (response.statusCode == 200) {
+        final responseData = jsonDecode(response.body);
+        allCommunityPosts
+            .addAll(List<Post>.from(responseData.map((x) => Post.fromJson(x))));
+        isLoadingMore = false;
+
+        update();
+      } else {
+        isLoadingMore = false;
+        update();
+        Alerts.showError(message: 'Failed to load feed');
+      }
+    } catch (e) {
+      isLoadingMore = false;
+
       Alerts.showError(message: 'Failed to load feed');
     }
   }
@@ -149,6 +193,61 @@ class FeedController extends GetxController {
 
   Future<void> addOrRemoveReaction(String feedId, String reaction) async {
     try {
+      //doing it locally
+      final post = allCommunityPosts
+          .firstWhere((element) => element.id.toString() == feedId);
+      if (post.like != null) {
+        if (post.like!['reaction_type'] == reaction) {
+          post.like = null;
+          post.likeCount = post.likeCount! - 1;
+          if (post.likeType != null) {
+            post.likeType!.removeWhere(
+                (e) => e.reactionType.toLowerCase() == reaction.toLowerCase());
+          }
+        } else {
+          post.like = {
+            'reaction_type': reaction,
+            'action': 'deleteOrCreate',
+            'feed_id': feedId,
+            'reactionSource': 'COMMUNITY',
+          };
+
+          if (post.likeType != null) {
+            if (!post.likeType!.any((e) =>
+                e.reactionType.toLowerCase() == reaction.toLowerCase())) {
+              post.likeType!.add(LikeType(
+                  feedId: int.parse(feedId), meta: {}, reactionType: reaction));
+            }
+          } else {
+            post.likeType = [
+              LikeType(
+                  feedId: int.parse(feedId), meta: {}, reactionType: reaction)
+            ];
+          }
+        }
+      } else {
+        post.like = {
+          'reaction_type': reaction,
+          'action': 'deleteOrCreate',
+          'feed_id': feedId,
+          'reactionSource': 'COMMUNITY',
+        };
+        post.likeCount = post.likeCount! + 1;
+        if (post.likeType != null) {
+          if (!post.likeType!.any(
+              (e) => e.reactionType.toLowerCase() == reaction.toLowerCase())) {
+            post.likeType!.add(LikeType(
+                feedId: int.parse(feedId), meta: {}, reactionType: reaction));
+          }
+        } else {
+          post.likeType = [
+            LikeType(
+                feedId: int.parse(feedId), meta: {}, reactionType: reaction)
+          ];
+        }
+      }
+      update();
+
       final token = AuthController.instance.loginResponse!.token;
 
       final response = await http.post(
@@ -166,7 +265,7 @@ class FeedController extends GetxController {
       );
 
       if (response.statusCode == 200) {
-        await getFeed();
+        //await getFeed();
         update();
       } else {
         Alerts.showError(message: 'Failed to like post');
@@ -177,19 +276,43 @@ class FeedController extends GetxController {
   }
 
   void startFeedUpdateTimer() {
-    feedUpdateTimer = Timer.periodic(const Duration(minutes: 1), (timer) {
-      getFeedIntheBackgorund();
-    });
+    // feedUpdateTimer = Timer.periodic(const Duration(minutes: 1), (timer) {
+    //   getFeedIntheBackgorund();
+    // });
   }
 
-  Future<void> createComment(
-      String feedId, String userId, String commentText) async {
-    if (commentText.isEmpty) {
+  Future<void> createComment(String feedId, String userId) async {
+    if (commentController.text.isEmpty) {
       Alerts.showError(message: 'Please write something to comment');
       return;
     }
 
     try {
+      // locally
+      if (!isReplying) {
+        final post = allCommunityPosts
+            .firstWhere((element) => element.id.toString() == feedId);
+        post.commentCount = post.commentCount! + 1;
+        update();
+      }
+
+      // comments.add(Comment(
+      //   schoolId: 0,
+      //   replyCount: 0,
+      //   likeCount: 0,
+      //   isAuthorAndAnonymous: false,
+      //   replies: [],
+      //   totalLikes: [],
+      //   reactionTypes: [],
+      //   createdAt: DateTime.now(),
+      //   updatedAt: DateTime.now(),
+      //   commentText: commentText,
+      //   feedId: int.parse(feedId),
+      //   userId: int.parse(userId),
+      //   id: comments.length + 1,
+      //   user: User(id: id, fullName: fullName, profilePic: profilePic, userType: userType, meta: meta),
+      // ));
+      // update();
       Alerts.showLoading(message: 'Posting comment...');
       final token = AuthController.instance.loginResponse!.token;
       final response = await http.post(
@@ -201,14 +324,14 @@ class FeedController extends GetxController {
         body: jsonEncode({
           'feed_id': feedId,
           'feed_user_id': userId,
-          'comment_txt': commentText,
+          'comment_txt': commentController.text,
           'commentSource': 'COMMUNITY',
           if (isReplying) 'parrent_id': replyingToID
         }),
       );
 
       if (response.statusCode == 200) {
-        await getFeed();
+        // await getFeed();
         update();
         Alerts.dismiss();
         Get.back();
@@ -218,9 +341,13 @@ class FeedController extends GetxController {
         Alerts.showError(message: 'Failed to comment');
       }
     } catch (e) {
-      print(e);
       Alerts.dismiss();
       Alerts.showError(message: 'Failed to comment');
+    } finally {
+      commentController.clear();
+      isReplying = false;
+      replyingToID = "";
+      replyigTo = "";
     }
   }
 
