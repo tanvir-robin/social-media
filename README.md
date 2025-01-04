@@ -106,7 +106,7 @@
 
 2. **Clone the Repo**
      ```bash
-       git clone <repo link>
+       git clone https://github.com/tanvir-robin/appifylab-task.git
 2. **Run the App**:
    - **Android**:
      - Ensure an emulator is running or a physical device is connected.
