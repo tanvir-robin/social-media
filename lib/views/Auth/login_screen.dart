@@ -4,6 +4,7 @@ import 'package:appifylab_task/controllers/auth_controller.dart';
 import 'package:appifylab_task/helpers/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -12,47 +13,52 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        resizeToAvoidBottomInset: true,
+        // resizeToAvoidBottomInset: true,
         body: Container(
-          alignment: Alignment.topCenter,
-          decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/login_bg.png'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: GetBuilder<AuthController>(
-              init: AuthController(),
-              builder: (authController) {
-                return SafeArea(
-                  bottom: false,
-                  child: SingleChildScrollView(
-                    child: ConstrainedBox(
-                      constraints: BoxConstraints(
-                        minHeight: MediaQuery.of(context).size.height,
-                      ),
-                      child: IntrinsicHeight(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            const Spacer(),
-                            const BrandingContainer(),
-                            const Spacer(),
-                            buildSignInContainer(authController),
-                          ],
-                        ),
-                      ),
+      alignment: Alignment.topCenter,
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/images/login_bg.png'),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: GetBuilder<AuthController>(
+          init: AuthController(),
+          builder: (authController) {
+            return SafeArea(
+              bottom: false,
+              child: SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: MediaQuery.of(context).size.height,
+                  ),
+                  child: IntrinsicHeight(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        const Spacer(),
+                        const BrandingContainer(),
+                        const Spacer(),
+                        buildSignInContainer(authController, context),
+                      ],
                     ),
                   ),
-                );
-              }),
-        ));
+                ),
+              ),
+            );
+          }),
+    ));
   }
 
-  Widget buildSignInContainer(AuthController authController) {
+  Widget buildSignInContainer(
+      AuthController authController, BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.all(16.0),
+      padding: EdgeInsets.only(
+          left: 16,
+          right: 16,
+          top: 16,
+          bottom: MediaQuery.of(context).viewInsets.bottom),
       decoration: BoxDecoration(
         color: const Color(0xFF095661),
         borderRadius: BorderRadius.circular(24),
