@@ -70,22 +70,27 @@
 - **Replies**:
   - Replies are collapsed by default. Clicking on them loads and displays the replies.
   - This approach reduces the number of read requests and prevents unnecessary user distractions.
+  
+
+---
+
+## Screenshots (taken on iOS Simulator)
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/28cd16ee-8d81-4dad-9858-27af40b1a485" alt="Screenshot 7" width="200"/>
-  <img src="https://github.com/user-attachments/assets/df33295f-22d9-4c73-ac8c-6069a1ee2963" alt="Screenshot 1" width="200"/>
-  <img src="https://github.com/user-attachments/assets/286ff2f0-5cdc-48e9-8e82-83d1ab9b1d4a" alt="Screenshot 2" width="200"/>
+  <img src="https://github.com/user-attachments/assets/28cd16ee-8d81-4dad-9858-27af40b1a485" alt="Screenshot 7" width="200" hspace="10" vspace="10"/>
+  <img src="https://github.com/user-attachments/assets/df33295f-22d9-4c73-ac8c-6069a1ee2963" alt="Screenshot 1" width="200" hspace="10" vspace="10"/>
+  <img src="https://github.com/user-attachments/assets/286ff2f0-5cdc-48e9-8e82-83d1ab9b1d4a" alt="Screenshot 2" width="200" hspace="10" vspace="10"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f6d8f176-00ec-4316-a154-d4f418216f4d" alt="Screenshot 3" width="200"/>
-  <img src="https://github.com/user-attachments/assets/7797ba38-27ca-4f2e-a310-59680d99cd10" alt="Screenshot 8" width="200"/>
-  <img src="https://github.com/user-attachments/assets/b86a5501-9665-4fc5-be74-b3770dabe85b" alt="Screenshot 4" width="200"/>
+  <img src="https://github.com/user-attachments/assets/f6d8f176-00ec-4316-a154-d4f418216f4d" alt="Screenshot 3" width="200" hspace="10" vspace="10"/>
+  <img src="https://github.com/user-attachments/assets/7797ba38-27ca-4f2e-a310-59680d99cd10" alt="Screenshot 8" width="200" hspace="10" vspace="10"/>
+  <img src="https://github.com/user-attachments/assets/b86a5501-9665-4fc5-be74-b3770dabe85b" alt="Screenshot 4" width="200" hspace="10" vspace="10"/>
 </p>
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/232d189a-cf29-41a4-afa5-381c25dcf395" alt="Screenshot 6" width="200"/>
-  <img src="https://github.com/user-attachments/assets/c47f0746-296b-4f44-9d54-9e34e4846cc4" alt="Screenshot 5" width="200"/>
+  <img src="https://github.com/user-attachments/assets/232d189a-cf29-41a4-afa5-381c25dcf395" alt="Screenshot 6" width="200" hspace="10" vspace="10"/>
+  <img src="https://github.com/user-attachments/assets/c47f0746-296b-4f44-9d54-9e34e4846cc4" alt="Screenshot 5" width="200" hspace="10" vspace="10"/>
 </p>
 
 
