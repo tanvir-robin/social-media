@@ -8,6 +8,7 @@
   - Clear all session data and logout.
 - **Dynamic Feed Fetching Mechanism**:
   - Capable of handling any changes dynamically.
+  - User-friendly pagination handling by infinity scrolling. 
 - **Feed Post**:
   - Show Like Count, Comment Count, Specific Reactions, and User Reaction Status.
   - Long press Reaction button to handle multiple types of reactions (Like, Love, Care, Angry, Sad).
@@ -45,6 +46,7 @@
   - From the New Post Box on the home screen to the main New Post Screen, a hero transition ensures the user feels they are typing in the same text field.
 - **Feed Post Design**:
   - Multiple images are perfectly centered with a border-radius while maintaining the original ratio.
+  - The feed is enabled infinity scrolling that manages the pagination. 
   - Feed post main content text size is adaptable to the length of the post. Short posts appear with larger fonts, enhancing readability.
   - For the feed post that has a background color, will be applied with different constraints, such as minimum height has been set (As same approach as facebook.com).
 - **User Profile Integration**:
