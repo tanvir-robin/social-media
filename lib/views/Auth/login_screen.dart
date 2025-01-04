@@ -4,7 +4,7 @@ import 'package:appifylab_task/controllers/auth_controller.dart';
 import 'package:appifylab_task/helpers/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:get/get.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -30,7 +30,9 @@ class LoginScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(
-                    minHeight: MediaQuery.of(context).size.height,
+                    minHeight: MediaQuery.of(context).size.height -
+                        MediaQuery.of(context).padding.top -
+                        MediaQuery.of(context).padding.bottom,
                   ),
                   child: IntrinsicHeight(
                     child: Column(
@@ -61,7 +63,10 @@ class LoginScreen extends StatelessWidget {
           bottom: MediaQuery.of(context).viewInsets.bottom),
       decoration: BoxDecoration(
         color: const Color(0xFF095661),
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(24),
+          topRight: Radius.circular(24),
+        ),
         boxShadow: [
           const BoxShadow(
             color: Color(0xFF013D45),

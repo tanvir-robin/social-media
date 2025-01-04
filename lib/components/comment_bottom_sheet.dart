@@ -57,82 +57,87 @@ class CommentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        ClipOval(
-          child: CachedNetworkImage(
-            imageUrl: userPic,
-            height: 55,
-            width: 55,
-            fit: BoxFit.cover,
+    return GetBuilder<FeedController>(builder: (feedController) {
+      return Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipOval(
+            child: CachedNetworkImage(
+              imageUrl: userPic,
+              height: 55,
+              width: 55,
+              fit: BoxFit.cover,
+            ),
           ),
-        ),
-        const SizedBox(width: 8),
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: const Color.fromARGB(255, 228, 229, 231),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                padding: const EdgeInsets.all(12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      userName,
-                      style: const TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(comment),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Text(
-                          time,
-                          style:
-                              const TextStyle(fontSize: 12, color: Colors.grey),
-                        ),
-                        const SizedBox(width: 20),
-                        GestureDetector(
-                          onTap: () {},
-                          child: const Text(
-                            'Like',
-                            style: TextStyle(color: Colors.blue),
+          const SizedBox(width: 8),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 228, 229, 231),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  padding: const EdgeInsets.all(12.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        userName,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(comment),
+                      const SizedBox(height: 8),
+                      Row(
+                        children: [
+                          Text(
+                            time,
+                            style: const TextStyle(
+                                fontSize: 12, color: Colors.grey),
                           ),
-                        ),
-                        const SizedBox(width: 20),
-                        GestureDetector(
-                          onTap: onReply,
-                          child: const Text(
-                            'Reply',
-                            style: TextStyle(color: Colors.blue),
+                          const SizedBox(width: 20),
+                          GestureDetector(
+                            onTap: () {},
+                            child: const Text(
+                              'Like',
+                              style: TextStyle(color: Colors.blue),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              if (replyCount > 0 && !showReplies)
-                InkWell(
-                  onTap: onReplyShow,
-                  child: Text(
-                    'View ${replyCount.toString()} replies',
-                    style: const TextStyle(
-                        color: Colors.blue, fontWeight: FontWeight.bold),
+                          const SizedBox(width: 20),
+                          GestureDetector(
+                            onTap: onReply,
+                            child: const Text(
+                              'Reply',
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
-            ],
+                if (replyCount > 0 && !showReplies)
+                  InkWell(
+                    onTap: onReplyShow,
+                    child: feedController.isFetchingReply
+                        ? const SizedBox()
+                        : Text(
+                            'View ${replyCount.toString()} replies',
+                            style: const TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
+                          ),
+                  ),
+              ],
+            ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }
 

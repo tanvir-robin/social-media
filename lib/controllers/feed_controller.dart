@@ -24,6 +24,7 @@ class FeedController extends GetxController {
   bool isReplying = false;
   bool isLoading = false;
   bool isLoadingMore = false;
+  bool isFetchingReply = false;
   bool isColorPaletteExpanded = false;
   String replyigTo = "";
   String replyingToID = "";
@@ -402,6 +403,8 @@ class FeedController extends GetxController {
         'https://iap.ezycourse.com/api/app/student/comment/getReply/${comment.id}';
 
     try {
+      isFetchingReply = true;
+      update();
       final response = await http.get(
         Uri.parse(url),
         headers: {
@@ -417,11 +420,17 @@ class FeedController extends GetxController {
                 .firstWhere((element) => element.id == comment.id)
                 .replieComments =
             List<Comment>.from(data.map((x) => Comment.fromJson(x)));
+        isFetchingReply = false;
+
         update();
       } else {
+        isFetchingReply = false;
+        update();
         Alerts.showToast(message: 'Failed to load replies');
       }
     } catch (e) {
+      isFetchingReply = false;
+      update();
       Alerts.showToast(message: 'Failed to load replies');
     }
   }
