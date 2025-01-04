@@ -21,11 +21,9 @@ class AuthGate extends StatelessWidget {
         } else if (snapshot.hasError) {
           return Center(child: Text('Something went wrong! ${snapshot.error}'));
         } else if (snapshot.data == true) {
-          // User is logged in
-          return const CommunityFeed(); // Replace with your HomePage widget
+          return const CommunityFeed();
         } else {
-          // User is not logged in
-          return const LoginScreen(); // Replace with your LoginPage widget
+          return const LoginScreen();
         }
       },
     );

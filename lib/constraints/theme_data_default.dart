@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final ThemeData ezycourseTheme = ThemeData(
-  // brightness: Brightness.dark,
   primaryColor: const Color(0xFF00C853),
-  // scaffoldBackgroundColor: const Color(0xFF00263F),
   textTheme: TextTheme(
     headlineMedium: GoogleFonts.figtree(
       fontSize: 30,

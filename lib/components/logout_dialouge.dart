@@ -90,7 +90,6 @@ class LogoutDialog extends StatelessWidget {
   }
 }
 
-// Usage example:
 void showLogoutAlert(BuildContext context) {
   showDialog(
     context: context,

@@ -264,7 +264,6 @@ class _ParentCommentWithChild extends StatelessWidget {
   );
   final Comment comment;
   final List<Comment> replies;
-  // final FocusNode commentBoxFocusNode;
 
   @override
   Widget build(BuildContext context) {

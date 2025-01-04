@@ -72,7 +72,7 @@ class CommunityFeed extends StatelessWidget {
             label: "Logout",
           ),
         ],
-        currentIndex: 0, // Make Community as active
+        currentIndex: 0,
         selectedItemColor: Colors.teal,
         unselectedItemColor: Colors.grey,
         onTap: (index) {

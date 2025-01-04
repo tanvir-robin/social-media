@@ -58,7 +58,6 @@ class PostCard extends StatelessWidget {
             alignment:
                 post.bgColor != null ? Alignment.center : Alignment.centerLeft,
             padding: const EdgeInsets.all(10),
-            // height: 150,
             constraints: post.bgColor != null
                 ? const BoxConstraints(minHeight: 150)
                 : null,
@@ -174,18 +173,8 @@ class PostCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // IconTextButton(
-              //   icon: post.like != null
-              //       ? Icons.thumb_up_alt_rounded
-              //       : Icons.thumb_up_alt_outlined,
-              //   text: 'Like',
-              //   onTap: () {
-              //     feedController.addLike(post.id.toString());
-              //   },
-              // ),
               ReactionButton<String>(
-                itemSize:
-                    const Size(45.0, 50.0), // Adjust size to fit the icons
+                itemSize: const Size(45.0, 50.0),
                 reactions: buildReactions(),
                 onReactionChanged: (reaction) {
                   feedController.addOrRemoveReaction(

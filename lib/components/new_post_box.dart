@@ -30,13 +30,10 @@ class NewPostBox extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Profile Icon
               Image.asset(
                 'assets/icons/avatar.png',
                 height: 60,
               ),
-
-              // Input Field with Hero
               Expanded(
                 child: Hero(
                   tag: 'postTextField',
@@ -61,17 +58,15 @@ class NewPostBox extends StatelessWidget {
                         border: InputBorder.none,
                       ),
                       onTap: () {
-                        Get.to(() => CreatePostScreen());
+                        Get.to(() => const CreatePostScreen());
                       },
                     ),
                   ),
                 ),
               ),
-
-              // Post Button
               ElevatedButton(
                 onPressed: () {
-                  Get.to(() => CreatePostScreen());
+                  Get.to(() => const CreatePostScreen());
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF004852),

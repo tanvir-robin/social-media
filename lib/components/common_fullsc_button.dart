@@ -13,8 +13,8 @@ class CommonFullscButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFE8F54B), // Button color
-          foregroundColor: Colors.black, // Text color
+          backgroundColor: const Color(0xFFE8F54B),
+          foregroundColor: Colors.black,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
