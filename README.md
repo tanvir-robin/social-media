@@ -71,13 +71,22 @@
   - Replies are collapsed by default. Clicking on them loads and displays the replies.
   - This approach reduces the number of read requests and prevents unnecessary user distractions.
  ![Uploading Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16.44.01.png…]()
-![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 47 05](https://github.com/user-attachments/assets/df33295f-22d9-4c73-ac8c-6069a1ee2963)
-![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 47 24](https://github.com/user-attachments/assets/286ff2f0-5cdc-48e9-8e82-83d1ab9b1d4a)
-![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 49 43](https://github.com/user-attachments/assets/f6d8f176-00ec-4316-a154-d4f418216f4d)
-![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 08](https://github.com/user-attachments/assets/b86a5501-9665-4fc5-be74-b3770dabe85b)
-![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 16](https://github.com/user-attachments/assets/7797ba38-27ca-4f2e-a310-59680d99cd10)
-![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 28](https://github.com/user-attachments/assets/232d189a-cf29-41a4-afa5-381c25dcf395)
-![Simulator Screenshot - iPhone 15 Pro - 2025-01-04 at 16 51 34](https://github.com/user-attachments/assets/c47f0746-296b-4f44-9d54-9e34e4846cc4)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/df33295f-22d9-4c73-ac8c-6069a1ee2963" alt="Screenshot 1" width="200"/>
+  <img src="https://github.com/user-attachments/assets/286ff2f0-5cdc-48e9-8e82-83d1ab9b1d4a" alt="Screenshot 2" width="200"/>
+  <img src="https://github.com/user-attachments/assets/f6d8f176-00ec-4316-a154-d4f418216f4d" alt="Screenshot 3" width="200"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b86a5501-9665-4fc5-be74-b3770dabe85b" alt="Screenshot 4" width="200"/>
+  <img src="https://github.com/user-attachments/assets/7797ba38-27ca-4f2e-a310-59680d99cd10" alt="Screenshot 5" width="200"/>
+  <img src="https://github.com/user-attachments/assets/232d189a-cf29-41a4-afa5-381c25dcf395" alt="Screenshot 6" width="200"/>
+</p>
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c47f0746-296b-4f44-9d54-9e34e4846cc4" alt="Screenshot 7" width="200"/>
+</p>
+
 
 
 ---
