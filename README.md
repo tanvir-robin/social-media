@@ -13,6 +13,7 @@
   - Show Like Count, Comment Count, Specific Reactions, and User Reaction Status.
   - Long press Reaction button to handle multiple types of reactions (Like, Love, Care, Angry, Sad).
   - Feed post background color is applied on posts that has background according to API Documentation.
+  - Text color for the feed content will be dyanmic based on the background color of the post. Best contrast color will be picked as text color based on the background the post.
 - **Comments**:
   - Show full names and profile photos.
   - Nested replies for every comment.
