@@ -19,7 +19,7 @@ class CurrentReaction extends StatelessWidget {
           Image.asset('assets/icons/${reaction.toLowerCase()}.png', height: 20),
           const SizedBox(width: 5),
           Text(
-            reaction[0] + reaction.substring(1).toLowerCase(),
+            (reaction[0].toUpperCase()) + reaction.substring(1).toLowerCase(),
             style: const TextStyle(fontWeight: FontWeight.bold),
           ),
         ],
