@@ -64,7 +64,7 @@ class PostCard extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(8),
               gradient: post.bgColor != null
-                  ? PostColors.getGradientColor(post.bgColor!)
+                  ? Utils.cssToFlutterGradient(post.bgColor!)
                   : null,
             ),
             child: Column(
@@ -100,6 +100,10 @@ class PostCard extends StatelessWidget {
                     return Text(
                       text,
                       style: TextStyle(
+                        color: post.bgColor == null
+                            ? Colors.black
+                            : Utils.getContrastingTextColor(
+                                Utils.cssToFlutterGradient(post.bgColor!)),
                         fontSize: fontSize,
                         fontWeight: post.bgColor != null
                             ? FontWeight.w700

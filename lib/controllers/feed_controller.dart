@@ -5,6 +5,7 @@ import 'package:appifylab_task/Api/endpoints.dart';
 import 'package:appifylab_task/constraints/post_colors.dart';
 import 'package:appifylab_task/controllers/auth_controller.dart';
 import 'package:appifylab_task/helpers/alerts.dart';
+import 'package:appifylab_task/helpers/utils.dart';
 import 'package:appifylab_task/models/comment.dart';
 import 'package:appifylab_task/models/community_posts.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class FeedController extends GetxController {
   String replyingToID = "";
   LinearGradient? postColor;
   int? postColorIndex;
+  bool isPickedBackground = false;
 
   @override
   onInit() {
@@ -171,8 +173,7 @@ class FeedController extends GetxController {
           'activity_type': 'group',
           'is_background': postColorIndex == 0 ? 0 : 1,
           if (postColorIndex != 0)
-            'bg_color': PostColors
-                .feedBackGroundGradientColorsToPost[postColorIndex ?? 0],
+            'bg_color': Utils.flutterToCssGradient(postColor!),
         }),
       );
       if (response.statusCode == 200) {

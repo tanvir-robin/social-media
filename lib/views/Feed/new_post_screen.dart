@@ -59,14 +59,16 @@ class CreatePostScreen extends StatelessWidget {
                     ),
                     child: TextField(
                       controller: feedController.postTextController,
-                      style: const TextStyle(color: Colors.black),
+                      style: TextStyle(
+                          color: Utils.getContrastingTextColor(
+                              feedController.postColor!)),
                       maxLines: 5,
-                      decoration: const InputDecoration(
-                        enabledBorder: OutlineInputBorder(
+                      decoration: InputDecoration(
+                        enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.grey, width: .7),
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide:
                               BorderSide(color: Color(0xFF6662FF), width: 1.0),
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
@@ -74,8 +76,10 @@ class CreatePostScreen extends StatelessWidget {
                         fillColor: Colors.transparent,
                         hintText: "What's on your mind?",
                         hintStyle: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.w200),
-                        border: OutlineInputBorder(
+                            color: Utils.getContrastingTextColor(
+                                feedController.postColor!),
+                            fontWeight: FontWeight.w200),
+                        border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(8.0)),
                         ),
                       ),
@@ -153,6 +157,12 @@ class CreatePostScreen extends StatelessWidget {
                                         feedController.postColorIndex =
                                             PostColors.gradientsColor
                                                 .indexOf(color);
+                                        if (feedController.postColorIndex !=
+                                            0) {
+                                          feedController.isPickedBackground =
+                                              true;
+                                        }
+
                                         feedController.updateScreen();
                                       },
                                       child: Container(
