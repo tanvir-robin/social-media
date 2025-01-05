@@ -39,10 +39,11 @@
 
 ---
 
-## Design Keynotes
+## UI/UX Keynotes
 - **Gradient Colors**:
   - Matches exactly as mentioned in the API docs.
   - An expandable animated color palate menu has been implemented which user will see while creating a post and can pick color for his post's background.
+  - Text color will be adjusted based on the background color to maintain the contrast.
 - **Hero Transition**:
   - From the New Post Box on the home screen to the main New Post Screen, a hero transition ensures the user feels they are typing in the same text field.
 - **Feed Post Design**:
