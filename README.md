@@ -1,4 +1,4 @@
-# AppifyLab Assessment
+# Dummy Project AppifyLab
 
 ## Implementations
 - **Login Screen**:
@@ -136,4 +136,4 @@
 ---
 
 ## Acknowledgments
-Thank you to AppifyLab for the opportunity to work on this assessment and showcase these implementations.
+Thank you to AppifyLab for the opportunity to work on this and showcase these implementations.
