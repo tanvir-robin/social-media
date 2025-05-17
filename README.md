@@ -1,4 +1,4 @@
-# Dummy Project AppifyLab
+# Social Media Project - AppifyLab
 
 ## Implementations
 - **Login Screen**:
