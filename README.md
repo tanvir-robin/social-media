@@ -1,4 +1,4 @@
-# Social Media Project - AppifyLab
+# SocialSphere (Flutter Social Media App + Custom Backend) - AppifyLab
 
 ## Implementations
 - **Login Screen**:
